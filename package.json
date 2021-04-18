@@ -1,9 +1,8 @@
 {
-  "name": "Woody_UI",
+  "name": "MeLiChallenge",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://FNGLATSYS@dev.azure.com/FNGLATSYS/PersubII/_git/Woody_UI",
-  "author": "Gerbezel <gbezeljak@tupaca.com>",
+  "author": "Gerbezel <gbezeljak@hotmail.com>",
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.12.10",
