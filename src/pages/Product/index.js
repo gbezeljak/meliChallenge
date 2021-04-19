@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import Page from "components/Page";
+import React, { Component } from 'react'
+import Page from 'components/Page'
 
 class Product extends Component {
   render() {
-    return <Page withHeader>WIP product</Page>;
+    return <Page withHeader>WIP product</Page>
   }
 }
 
-export default Product;
+export default Product

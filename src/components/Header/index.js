@@ -1,30 +1,20 @@
-import React from "react";
-import HeaderMenu from "./HeaderMenu";
-import { getPage } from "utils/url";
-import { withRouter } from "react-router-dom";
-import Icon, { IconNames } from "components/Icons";
-import theme from "config/theme";
-import {
-  Container,
-  ContentWrapper,
-  HeaderTitle,
-  InfoContainer,
-  LogOutButton,
-} from "./styled";
+import React from 'react'
+import { withRouter } from 'react-router-dom'
+import { Container, SearchWrapper, SearchInput, SearchButton, StyledImg } from './styled'
 
-const Header = ({ location }) => {
-  const currentPage = getPage(location.pathname);
+import magnifyingGlass from 'assets/images/magnifyingGlass.png'
 
+const Header = () => {
   return (
     <Container>
-      <ContentWrapper>
-        <HeaderTitle>{"REACT"}</HeaderTitle>
-        <InfoContainer>
-          <HeaderMenu active={currentPage} />
-        </InfoContainer>
-      </ContentWrapper>
+      <SearchWrapper>
+        <SearchInput onChange={(e) => console.log(e.target.value)} placeholder="WIP" />
+        <SearchButton onClick={() => console.log('click')}>
+          <StyledImg src={magnifyingGlass} />
+        </SearchButton>
+      </SearchWrapper>
     </Container>
-  );
-};
+  )
+}
 
-export default withRouter(Header);
+export default withRouter(Header)

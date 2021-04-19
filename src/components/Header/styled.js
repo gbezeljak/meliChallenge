@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import mediaQueries from 'config/media-queries'
 
 export const Container = styled.div`
   flex: 0.075;
@@ -8,57 +7,40 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.meLiYellow};
 `
 
-export const ContentWrapper = styled.div`
-  height: 100%;
+export const SearchWrapper = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.gray};
+  max-width: 800px;
 `
 
-export const InfoContainer = styled.div`
-  height: 100%;
+export const SearchInput = styled.input`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: 700px;
+  height: 40px;
+  border: ${({ theme }) => `1px solid ${theme.colors.gray}`};
+  border-right: none;
+  border-radius: 5px 0px 0px 5px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
 `
 
-export const HeaderTitle = styled.label`
-  font-family: ${({ theme }) => theme.fonts.roboto};
-  color: ${({ theme }) => theme.colors.blue};
-  font-weight: 500;
-  font-size: 30px;
-  padding: 9px 23px;
-`
-
-export const HeaderIcon = styled.img`
-  display: none;
-  width: 25px;
-  height: 20px;
-  margin-left: 16px;
+export const SearchButton = styled.button`
+  height: 40px;
+  width: 40px;
+  border: ${({ theme }) => `1px solid ${theme.colors.gray}`}!important;
+  border-radius: 0px 5px 5px 0px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
   cursor: pointer;
-
-  ${mediaQueries.tablet`
-    display: block;
-  `};
+  background: ${({ theme }) => theme.colors.gray};
+  transition: all 0.2s ease;
+  :hover {
+    background: ${({ theme }) => theme.colors.mediumGray};
+    border: ${({ theme }) => `1px solid ${theme.colors.mediumGray}`}!important;
+  }
 `
 
-export const HeaderImg = styled.img`
-  width: 65px;
-  margin: 0 30px;
-
-  ${mediaQueries.laptop`
-    width: 45px;
-  `}
-`
-
-export const LogOutButton = styled.div`
-  padding: 10px;
-  margin-right: 30px;
-  cursor: pointer;
+export const StyledImg = styled.img`
+  height: 19px;
+  margin: -4px;
 `

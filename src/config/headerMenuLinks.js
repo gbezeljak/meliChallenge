@@ -1,14 +1,14 @@
-import { capitalizeFirstLetter } from "utils/strings";
+import { capitalizeFirstLetter } from 'utils/strings'
 
 const MENUHEADER_LINKS = [
   {
-    label: capitalizeFirstLetter("HOME"),
-    link: "",
+    label: capitalizeFirstLetter('HOME'),
+    link: '',
   },
   {
-    label: capitalizeFirstLetter("USERS"),
-    link: "users",
+    label: capitalizeFirstLetter('USERS'),
+    link: 'users',
   },
-];
+]
 
-export default MENUHEADER_LINKS;
+export default MENUHEADER_LINKS
