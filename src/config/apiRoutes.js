@@ -1,18 +1,8 @@
-const getBaseUrl = () => {
-  // PROD ENVIROMENT
-  if (process.env.REACT_APP_ENVIROMENT === 'prod') {
-    return 'PROD_URL'
-  }
-  // STAGING ENVIROMENT
-  if (process.env.REACT_APP_ENVIROMENT === 'staging') {
-    return 'STAGING_URL'
-  }
-  // DEV ENVIROMENT / DEFAULT ENVIROMENT
-  return 'https://jsonplaceholder.typicode.com'
-}
+const getBaseUrl = () => process.env.REACT_APP_URI_BACKEND
+
 const API_ROUTES = {
   BASE_URL: getBaseUrl(),
-  USERS: '/users'
+  MAIN_SEARCH: '/sites/MLA/search',
 }
 
 export default API_ROUTES

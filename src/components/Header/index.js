@@ -1,18 +1,16 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { Container, SearchWrapper, SearchInput, SearchButton, StyledImg } from './styled'
+import { Container, StyledLogo } from './styles'
 
-import magnifyingGlass from 'assets/images/magnifyingGlass.png'
+import Search from './SearchInput'
+
+import meliLogo from 'assets/images/meliLogo.png'
 
 const Header = () => {
   return (
     <Container>
-      <SearchWrapper>
-        <SearchInput onChange={(e) => console.log(e.target.value)} placeholder="WIP" />
-        <SearchButton onClick={() => console.log('click')}>
-          <StyledImg src={magnifyingGlass} />
-        </SearchButton>
-      </SearchWrapper>
+      <StyledLogo src={meliLogo} />
+      <Search />
     </Container>
   )
 }

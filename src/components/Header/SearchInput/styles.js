@@ -1,19 +1,9 @@
-import styled from 'styled-components'
-
-export const Container = styled.div`
-  flex: 0.075;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.meLiYellow};
-`
-
 export const SearchWrapper = styled.div`
   width: 100%;
   max-width: 800px;
 `
+
+import styled from 'styled-components'
 
 export const SearchInput = styled.input`
   width: 100%;
@@ -23,6 +13,8 @@ export const SearchInput = styled.input`
   border-right: none;
   border-radius: 5px 0px 0px 5px;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
+  font-size: 16px;
+  padding-left: 15px;
 `
 
 export const SearchButton = styled.button`
@@ -42,5 +34,5 @@ export const SearchButton = styled.button`
 
 export const StyledImg = styled.img`
   height: 19px;
-  margin: -4px;
+  margin: -3px;
 `
