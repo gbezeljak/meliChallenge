@@ -1,9 +1,11 @@
+import styled from 'styled-components'
+
 export const SearchWrapper = styled.div`
   width: 100%;
   max-width: 800px;
+  flex-wrap: nowrap;
+  display: flex;
 `
-
-import styled from 'styled-components'
 
 export const SearchInput = styled.input`
   width: 100%;
