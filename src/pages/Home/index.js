@@ -6,6 +6,9 @@ import { PageLoader } from 'components/Loader'
 
 import Page from 'components/Page'
 import NoSearch from 'components/NoSearch'
+import HorizontalProductCard from 'components/HorizontalProductCard'
+
+import { ResultsWrapper } from './styles'
 
 class Home extends React.Component {
   componentDidMount() {}
@@ -16,7 +19,15 @@ class Home extends React.Component {
         {isFetching ? (
           <PageLoader />
         ) : values ? (
-          <div>values</div>
+          values.results.length ? (
+            <ResultsWrapper>
+              {values.results.map((result) => (
+                <HorizontalProductCard key={result.id} values={result} />
+              ))}
+            </ResultsWrapper>
+          ) : (
+            <div>no values</div>
+          )
         ) : error ? (
           <div>error wip</div>
         ) : (

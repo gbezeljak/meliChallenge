@@ -10,6 +10,8 @@ const theme = {
     blueGreen: '#19A289',
     transparent: '#FFFFFF',
     meLiYellow: '#fff159',
+    phantomGreen: '#e6f7ee',
+    green: '#16aa97',
   },
   fonts: {
     roboto: `'Roboto', sans-serif`,
