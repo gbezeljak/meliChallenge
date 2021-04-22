@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router'
 
 import commonText from 'constants/commonText'
 
@@ -20,17 +21,22 @@ import {
 
 const { COMMON } = commonText
 
-const ConditionParser = (condition) =>
+const conditionParser = (condition) =>
   condition === 'new' ? capitalizeFirstLetter(COMMON.NEW) : capitalizeFirstLetter(COMMON.USED)
 
+const handleProductClick = (history, productId) => history.push(`items/:${productId}`)
+
 const HorizontalProductCard = ({ values }) => {
-  console.log(values)
+  const history = useHistory()
   return (
     <Card>
       {values && (
         <>
           <ThumbnailWrapper>
-            <Thumbnail src={values.thumbnail} onClick={() => alert('WIP')} />
+            <Thumbnail
+              src={values.thumbnail}
+              onClick={() => handleProductClick(history, values.id)}
+            />
           </ThumbnailWrapper>
           <ProdInfoWrapper>
             <PriceWrapper>
@@ -42,8 +48,8 @@ const HorizontalProductCard = ({ values }) => {
               )}
             </PriceWrapper>
             <NameWrapper>
-              <Condition>{ConditionParser(values.condition)}</Condition>
-              <Title onClick={() => alert('WIP')}> {values.title}</Title>
+              <Condition>{conditionParser(values.condition)}</Condition>
+              <Title onClick={() => handleProductClick(history, values.id)}> {values.title}</Title>
             </NameWrapper>
           </ProdInfoWrapper>
 

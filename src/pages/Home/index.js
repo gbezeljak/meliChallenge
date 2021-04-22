@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { PageLoader } from 'components/Loader'
+import { resetSearchInputValue, fetchProducts, setSearchInputValue } from 'actions/mainSearch'
 
+import { PageLoader } from 'components/Loader'
 import Page from 'components/Page'
 import NoSearch from 'components/NoSearch'
 import HorizontalProductCard from 'components/HorizontalProductCard'
@@ -11,7 +12,15 @@ import HorizontalProductCard from 'components/HorizontalProductCard'
 import { ResultsWrapper } from './styles'
 
 class Home extends React.Component {
-  componentDidMount() {}
+  componentDidMount() {
+    console.log(this.props.history.location)
+    const { history, fetchProducts, setSearchInputValue } = this.props
+    if (history.location && history.location.search) {
+      const search = history.location.search.split('=').pop()
+      setSearchInputValue(search)
+      fetchProducts(search, history)
+    }
+  }
   render() {
     const { isFetching, values, error } = this.props.mainSearch
     return (
@@ -40,6 +49,7 @@ class Home extends React.Component {
 
 const mapStateToProps = ({ mainSearch }) => ({ mainSearch })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({}, dispatch)
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ resetSearchInputValue, fetchProducts, setSearchInputValue }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

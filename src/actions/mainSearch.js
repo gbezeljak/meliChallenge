@@ -22,12 +22,15 @@ const setSearchInputValue = (value) => (dispatch) => dispatch(setSearchInput({ v
 
 const resetSearchInputValue = () => (dispatch) => dispatch(resetSearchInput())
 
-const fetchProducts = (value) => {
+const fetchProducts = (value, history) => {
   return async (dispatch) => {
     const api = await getApi()
     dispatch(fetchProductsStart())
+
     try {
       const response = await api.get(`${API_ROUTES.MAIN_SEARCH}?q=:${value}`)
+
+      history.push({ pathname: '/items', search: `search=${value}` })
       dispatch(fetchProductsSuccess(response.data))
     } catch (error) {
       dispatch(fetchProductsError(error))

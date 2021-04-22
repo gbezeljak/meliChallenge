@@ -22,7 +22,8 @@ function App() {
           <Router history={browserHistory}>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/users" component={Product} />
+              <Route exact path="/items" component={Home} />
+              <Route exact path="/items/:id" component={Product} />
             </Switch>
           </Router>
           <GlobalStyle />

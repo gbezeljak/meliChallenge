@@ -1,15 +1,15 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { Container, StyledLogo } from './styles'
+
+import { Container } from './styles'
 
 import Search from './SearchInput'
-
-import meliLogo from 'assets/images/meliLogo.png'
+import Logo from './Logo'
 
 const Header = () => {
   return (
     <Container>
-      <StyledLogo src={meliLogo} />
+      <Logo />
       <Search />
     </Container>
   )

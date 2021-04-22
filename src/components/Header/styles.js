@@ -11,4 +11,5 @@ export const Container = styled.div`
 
 export const StyledLogo = styled.img`
   height: 50px;
+  cursor: pointer;
 `
