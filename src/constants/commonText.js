@@ -7,5 +7,12 @@ export default {
     NEW: 'nuevo',
     USED: 'usado',
     COMES_FREE: 'llega gratis',
+    BUY: 'comprar',
+    SOLD: 'vendidos',
+    UNITS: 'unidades',
+  },
+  PHRASES: {
+    ONLY_LEFT: 'solo quedan',
+    PRODUCT_DECRIPTION: 'descripción del producto',
   },
 }

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Label = styled.div`
   font-size: 40px;
+  line-height: 48px;
   font-weight: 800;
   color: rgba(0, 0, 0, 0.67);
   line-height: 30px;

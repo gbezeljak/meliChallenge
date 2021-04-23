@@ -1,3 +1,10 @@
-export const capitalizeFirstLetter = string => `${string.charAt(0).toUpperCase()}${string.slice(1)}`
+import commonText from 'constants/commonText'
 
-export const lowerFirsLetter = string => `${string.charAt(0).toLowerCase()}${string.slice(1)}`
+const { COMMON } = commonText
+
+export const capitalizeFirstLetter = (string) =>
+  `${string.charAt(0).toUpperCase()}${string.slice(1)}`
+
+export const lowerFirsLetter = (string) => `${string.charAt(0).toLowerCase()}${string.slice(1)}`
+
+export const conditionParser = (condition) => (condition === 'new' ? COMMON.NEW : COMMON.USED)

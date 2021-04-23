@@ -3,7 +3,7 @@ import { useHistory } from 'react-router'
 
 import commonText from 'constants/commonText'
 
-import { capitalizeFirstLetter } from 'utils/strings'
+import { conditionParser, capitalizeFirstLetter } from 'utils/strings'
 
 import {
   Card,
@@ -17,16 +17,17 @@ import {
   NameWrapper,
   Title,
   Localization,
+  Currency,
 } from './styles'
 
 const { COMMON } = commonText
 
-const conditionParser = (condition) =>
-  condition === 'new' ? capitalizeFirstLetter(COMMON.NEW) : capitalizeFirstLetter(COMMON.USED)
+const handleProductClick = (history, productId, persistSelectedProduct) => {
+  persistSelectedProduct(productId)
+  history.push(`items/:${productId}`)
+}
 
-const handleProductClick = (history, productId) => history.push(`items/:${productId}`)
-
-const HorizontalProductCard = ({ values }) => {
+const HorizontalProductCard = ({ values, persistSelectedProduct }) => {
   const history = useHistory()
   return (
     <Card>
@@ -35,21 +36,24 @@ const HorizontalProductCard = ({ values }) => {
           <ThumbnailWrapper>
             <Thumbnail
               src={values.thumbnail}
-              onClick={() => handleProductClick(history, values.id)}
+              onClick={() => handleProductClick(history, values.id, persistSelectedProduct)}
             />
           </ThumbnailWrapper>
           <ProdInfoWrapper>
             <PriceWrapper>
               <Price>
-                $ {values.price} - {values.currency_id}
+                $ {values.price} - <Currency>{values.currency_id}</Currency>
               </Price>
               {values.shipping.free_shipping && (
                 <Arrival>{capitalizeFirstLetter(COMMON.COMES_FREE)}</Arrival>
               )}
             </PriceWrapper>
             <NameWrapper>
-              <Condition>{conditionParser(values.condition)}</Condition>
-              <Title onClick={() => handleProductClick(history, values.id)}> {values.title}</Title>
+              <Condition>{capitalizeFirstLetter(conditionParser(values.condition))}</Condition>
+              <Title onClick={() => handleProductClick(history, values.id, persistSelectedProduct)}>
+                {' '}
+                {values.title}
+              </Title>
             </NameWrapper>
           </ProdInfoWrapper>
 

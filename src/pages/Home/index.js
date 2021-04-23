@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { resetSearchInputValue, fetchProducts, setSearchInputValue } from 'actions/mainSearch'
+import { setSelectedProductValue } from 'actions/product'
 
 import { PageLoader } from 'components/Loader'
 import Page from 'components/Page'
@@ -13,7 +14,6 @@ import { ResultsWrapper } from './styles'
 
 class Home extends React.Component {
   componentDidMount() {
-    console.log(this.props.history.location)
     const { history, fetchProducts, setSearchInputValue } = this.props
     if (history.location && history.location.search) {
       const search = history.location.search.split('=').pop()
@@ -31,7 +31,11 @@ class Home extends React.Component {
           values.results.length ? (
             <ResultsWrapper>
               {values.results.map((result) => (
-                <HorizontalProductCard key={result.id} values={result} />
+                <HorizontalProductCard
+                  key={result.id}
+                  values={result}
+                  persistSelectedProduct={this.props.setSelectedProductValue}
+                />
               ))}
             </ResultsWrapper>
           ) : (
@@ -50,6 +54,9 @@ class Home extends React.Component {
 const mapStateToProps = ({ mainSearch }) => ({ mainSearch })
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ resetSearchInputValue, fetchProducts, setSearchInputValue }, dispatch)
+  bindActionCreators(
+    { resetSearchInputValue, fetchProducts, setSearchInputValue, setSelectedProductValue },
+    dispatch
+  )
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

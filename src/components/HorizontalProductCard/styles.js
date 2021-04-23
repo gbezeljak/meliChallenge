@@ -50,6 +50,7 @@ export const Arrival = styled.p`
 
 export const Price = styled.h2`
   font-size: 24px;
+  display: flex;
 `
 
 export const NameWrapper = styled.div`
@@ -81,4 +82,12 @@ export const Title = styled.button`
 export const Localization = styled.div`
   margin: 20px 20px auto auto;
   color: ${theme.colors.mediumGray};
+`
+
+export const Currency = styled.p`
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
 `
