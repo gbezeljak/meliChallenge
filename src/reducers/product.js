@@ -4,6 +4,9 @@ import {
   fetchProductByIdStart,
   fetchProductByIdSuccess,
   fetchProductByIdError,
+  fetchProductDescriptionStart,
+  fetchProductDescriptionSuccess,
+  fetchProductDescriptionError,
 } from 'actions/product'
 
 const defaultState = {
@@ -12,6 +15,10 @@ const defaultState = {
   values: null,
   isFetching: false,
   error: false,
+
+  valueDescription: null,
+  isFetchingDescription: false,
+  descriptionError: false,
 }
 
 const reducer = handleActions(
@@ -39,6 +46,23 @@ const reducer = handleActions(
       ...state,
       isFetching: false,
       error,
+    }),
+
+    [fetchProductDescriptionStart]: (state) => ({
+      ...state,
+      isFetchingDescription: true,
+      descriptionError: null,
+    }),
+    [fetchProductDescriptionSuccess]: (state, { payload: { values } }) => ({
+      ...state,
+      valueDescription: values,
+      isFetchingDescription: false,
+      descriptionError: null,
+    }),
+    [fetchProductDescriptionError]: (state, { payload: { error } }) => ({
+      ...state,
+      isFetchingDescription: false,
+      descriptionError: error,
     }),
   },
   defaultState

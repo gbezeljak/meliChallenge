@@ -55,6 +55,10 @@ export const BuyButton = styled.button`
   width: 100%;
   margin: 0px auto;
   font-size: 21px;
+  transition: all 0.2s ease;
+  :hover {
+    opacity: 0.8;
+  }
 `
 
 export const FooterExtraDataWrapper = styled.p`
@@ -66,6 +70,9 @@ export const FooterExtraDataWrapper = styled.p`
 
 export const DescriptionWrapper = styled.div`
   margin-top: 30px;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
 `
 
 export const DescriptionTitle = styled.p`
@@ -75,4 +82,10 @@ export const DescriptionTitle = styled.p`
 export const Description = styled.p`
   margin-top: 20px;
   color: ${theme.colors.mediumGray};
+  overflow: auto;
+`
+
+export const DescriptionLoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `

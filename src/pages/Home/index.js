@@ -10,6 +10,8 @@ import Page from 'components/Page'
 import NoSearch from 'components/NoSearch'
 import HorizontalProductCard from 'components/HorizontalProductCard'
 
+import commonText from 'constants/commonText'
+
 import { ResultsWrapper } from './styles'
 
 class Home extends React.Component {
@@ -42,7 +44,7 @@ class Home extends React.Component {
             <div>no values</div>
           )
         ) : error ? (
-          <div>error wip</div>
+          <div>{error || commonText.ERRORS.DEFAULT_PRODUCT_DESCRIPTION}</div>
         ) : (
           <NoSearch />
         )}

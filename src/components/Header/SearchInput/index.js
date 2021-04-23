@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { useHistory } from 'react-router'
 
+import { capitalizeFirstLetter } from 'utils/strings'
+
 import { setSearchInputValue, fetchProducts } from 'actions/mainSearch'
 
 import { SearchWrapper, SearchInput, SearchButton, StyledImg } from './styles'
@@ -20,7 +22,7 @@ const Search = (props) => {
       <SearchInput
         onChange={(e) => props.setSearchInputValue(e.target.value)}
         value={props.mainSearch.inputValue}
-        placeholder={HINTS.SEARCH_PLACEHOLDER}
+        placeholder={capitalizeFirstLetter(HINTS.SEARCH_PLACEHOLDER)}
         onKeyDown={(e) =>
           e.key === 'Enter' && props.fetchProducts(props.mainSearch.inputValue, history)
         }

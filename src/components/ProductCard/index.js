@@ -2,6 +2,8 @@ import React from 'react'
 
 import commonText from 'constants/commonText'
 
+import { InlineLoader } from 'components/Loader'
+
 import { conditionParser, capitalizeFirstLetter } from 'utils/strings'
 
 import {
@@ -17,11 +19,12 @@ import {
   DescriptionWrapper,
   DescriptionTitle,
   Description,
+  DescriptionLoaderWrapper,
 } from './styles'
 
-const { COMMON, PHRASES } = commonText
+const { COMMON, PHRASES, ERRORS } = commonText
 
-const ProductCard = ({ values }) => (
+const ProductCard = ({ values, descriptionObj }) => (
   <Card>
     <Wrapper>
       <ImgWrapper>
@@ -43,8 +46,15 @@ const ProductCard = ({ values }) => (
     <DescriptionWrapper>
       <DescriptionTitle>{capitalizeFirstLetter(PHRASES.PRODUCT_DECRIPTION)}</DescriptionTitle>
       <Description>
-        pablito clavo un clavito que clavito clavo pablito, no olvidarse de hacer el request para
-        esta descripción.
+        {descriptionObj.isFetchingDescription ? (
+          <DescriptionLoaderWrapper>
+            <InlineLoader />
+          </DescriptionLoaderWrapper>
+        ) : descriptionObj.descriptionError ? (
+          <div>{descriptionObj.descriptionError || ERRORS.DEFAULT_PRODUCT_DESCRIPTION}</div>
+        ) : (
+          descriptionObj.valueDescription.plain_text
+        )}
       </Description>
     </DescriptionWrapper>
   </Card>

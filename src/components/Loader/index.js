@@ -14,3 +14,7 @@ export const PageLoader = () => (
     style={{ margin: 'auto' }}
   />
 )
+
+export const InlineLoader = () => (
+  <Loader type="ThreeDots" color={theme.colors.meLiYellow} height={100} width={100} />
+)

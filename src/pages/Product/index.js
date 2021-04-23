@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { resetSearchInputValue } from 'actions/mainSearch'
-import { fetchProductsById } from 'actions/product'
+import { fetchProductsById, fetchProductDescription } from 'actions/product'
 
 import Page from 'components/Page'
 import ProductCard from 'components/ProductCard'
@@ -13,21 +13,32 @@ import { CardWrapper } from './styles'
 
 class Product extends Component {
   componentDidMount = () => {
-    const { fetchProductsById, product, history } = this.props
+    const { fetchProductsById, fetchProductDescription, product, history } = this.props
     const search = history.location.pathname.split(':').pop()
     fetchProductsById(product.selectedProduct || search)
+    fetchProductDescription(product.selectedProduct || search)
     this.props.resetSearchInputValue()
   }
 
   render() {
-    const { isFetching, values, error } = this.props.product
+    const {
+      isFetching,
+      values,
+      error,
+      valueDescription,
+      isFetchingDescription,
+      descriptionError,
+    } = this.props.product
     return (
       <Page withHeader>
         <CardWrapper>
           {isFetching ? (
             <PageLoader />
           ) : values ? (
-            <ProductCard values={values} />
+            <ProductCard
+              values={values}
+              descriptionObj={{ valueDescription, isFetchingDescription, descriptionError }}
+            />
           ) : error ? (
             <div>error wip</div>
           ) : (
@@ -42,6 +53,9 @@ class Product extends Component {
 const mapStateToProps = ({ product }) => ({ product })
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ resetSearchInputValue, fetchProductsById }, dispatch)
+  bindActionCreators(
+    { resetSearchInputValue, fetchProductsById, fetchProductDescription },
+    dispatch
+  )
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product)
