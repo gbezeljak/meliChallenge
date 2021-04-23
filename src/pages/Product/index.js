@@ -9,6 +9,10 @@ import Page from 'components/Page'
 import ProductCard from 'components/ProductCard'
 import { PageLoader } from 'components/Loader'
 
+import commonText from 'constants/commonText'
+
+import { capitalizeFirstLetter } from 'utils/strings'
+
 import { CardWrapper } from './styles'
 
 class Product extends Component {
@@ -40,9 +44,9 @@ class Product extends Component {
               descriptionObj={{ valueDescription, isFetchingDescription, descriptionError }}
             />
           ) : error ? (
-            <div>error wip</div>
+            <div>{error || capitalizeFirstLetter(commonText.ERRORS.DEFAULT_PRODUCT)}</div>
           ) : (
-            <div>nono</div>
+            <div>{error || capitalizeFirstLetter(commonText.HINTS.NO_PRODUCT)}</div>
           )}
         </CardWrapper>
       </Page>

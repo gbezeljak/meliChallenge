@@ -3,6 +3,8 @@ export default {
     SEARCH_PLACEHOLDER: 'nunca dejes de Buscar',
     NO_SEARCH: 'no olvides hacer tu búsqueda.',
     NO_PAGE: 'la pagina solicitada no existe',
+    NO_VALUES: 'no hay productos que concuerden con tu búsqueda',
+    NO_PRODUCT: 'el producto seleccionado no existe',
   },
   COMMON: {
     NEW: 'nuevo',
@@ -19,5 +21,7 @@ export default {
   },
   ERRORS: {
     DEFAULT_PRODUCT_DESCRIPTION: 'hubo un problema consiguiendo la description del producto',
+    DEFAULT_SEARCH: 'hubo un problema con tu búsqueda',
+    DEFAULT_PRODUCT: 'hubo un problema con el producto seleccionado',
   },
 }

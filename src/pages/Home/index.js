@@ -9,8 +9,11 @@ import { PageLoader } from 'components/Loader'
 import Page from 'components/Page'
 import NoSearch from 'components/NoSearch'
 import HorizontalProductCard from 'components/HorizontalProductCard'
+import NoValues from 'components/NoValues'
 
 import commonText from 'constants/commonText'
+
+import { capitalizeFirstLetter } from 'utils/strings'
 
 import { ResultsWrapper } from './styles'
 
@@ -41,10 +44,10 @@ class Home extends React.Component {
               ))}
             </ResultsWrapper>
           ) : (
-            <div>no values</div>
+            <NoValues />
           )
         ) : error ? (
-          <div>{error || commonText.ERRORS.DEFAULT_PRODUCT_DESCRIPTION}</div>
+          <div>{error || capitalizeFirstLetter(commonText.ERRORS.DEFAULT_SEARCH)}</div>
         ) : (
           <NoSearch />
         )}
