@@ -12,6 +12,7 @@ import store from './store'
 import Home from 'pages/Home'
 import Product from 'pages/Product'
 import NotFound from 'pages/NotFound'
+import Logic from 'pages/Logic'
 
 const browserHistory = createBrowserHistory()
 
@@ -25,6 +26,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/items" component={Home} />
               <Route exact path="/items/:id" component={Product} />
+              <Route exact path={`/logic`} component={Logic} />
               <Route exact path={`/404`} component={NotFound} />
               <Redirect to={`/404`} />
             </Switch>
