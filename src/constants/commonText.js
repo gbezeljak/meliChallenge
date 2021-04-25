@@ -24,4 +24,7 @@ export default {
     DEFAULT_SEARCH: 'hubo un problema con tu búsqueda',
     DEFAULT_PRODUCT: 'hubo un problema con el producto seleccionado',
   },
+  PAGES: {
+    HOME: 'home',
+  },
 }

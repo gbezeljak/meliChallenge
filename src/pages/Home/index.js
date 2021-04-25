@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { resetSearchInputValue, fetchProducts, setSearchInputValue } from 'actions/mainSearch'
 import { setSelectedProductValue } from 'actions/product'
+import { setInternalNavValue } from 'actions/internalNav'
 
 import { PageLoader } from 'components/Loader'
 import Page from 'components/Page'
@@ -26,10 +27,21 @@ class Home extends React.Component {
       fetchProducts(search, history)
     }
   }
+
+  componentDidUpdate = () => {
+    const { mainSearch, setInternalNavValue } = this.props
+    if (mainSearch.values) {
+      setInternalNavValue({
+        search: mainSearch.inputValue ? mainSearch.inputValue : '',
+        product: '',
+      })
+    }
+  }
+
   render() {
     const { isFetching, values, error } = this.props.mainSearch
     return (
-      <Page withHeader>
+      <Page withHeader withInternalNav>
         {isFetching ? (
           <PageLoader />
         ) : values ? (
@@ -60,7 +72,13 @@ const mapStateToProps = ({ mainSearch }) => ({ mainSearch })
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
-    { resetSearchInputValue, fetchProducts, setSearchInputValue, setSelectedProductValue },
+    {
+      resetSearchInputValue,
+      fetchProducts,
+      setSearchInputValue,
+      setSelectedProductValue,
+      setInternalNavValue,
+    },
     dispatch
   )
 

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { resetSearchInputValue } from 'actions/mainSearch'
 import { fetchProductsById, fetchProductDescription } from 'actions/product'
+import { setInternalNavValue } from 'actions/internalNav'
 
 import Page from 'components/Page'
 import ProductCard from 'components/ProductCard'
@@ -24,6 +25,13 @@ class Product extends Component {
     this.props.resetSearchInputValue()
   }
 
+  componentDidUpdate = () => {
+    const { product, setInternalNavValue } = this.props
+    if (product.values) {
+      setInternalNavValue({ product: product.values.title ? product.values.title : '' })
+    }
+  }
+
   render() {
     const {
       isFetching,
@@ -34,7 +42,7 @@ class Product extends Component {
       descriptionError,
     } = this.props.product
     return (
-      <Page withHeader>
+      <Page withHeader withInternalNav>
         <CardWrapper>
           {isFetching ? (
             <PageLoader />
@@ -58,7 +66,7 @@ const mapStateToProps = ({ product }) => ({ product })
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
-    { resetSearchInputValue, fetchProductsById, fetchProductDescription },
+    { resetSearchInputValue, fetchProductsById, fetchProductDescription, setInternalNavValue },
     dispatch
   )
 
