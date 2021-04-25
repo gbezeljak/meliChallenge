@@ -28,11 +28,7 @@
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "test": "react-scripts test --coverage --watchAll=false",
-    "test:watch": "yarn test --watch",
-    "test:coverage": "yarn test --coverage --collectCoverageFrom=client/**/*.{js,jsx}",
-    "test:vsts": "yarn test --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --coverageReporters=html",
-    "dev": "env-cmd -f .env react-scripts start",
+    "start": "env-cmd -f .env react-scripts start",
     "build:development": "env-cmd -f .env.development react-scripts build",
     "build:staging": "env-cmd -f .env.staging react-scripts build",
     "build:production": "env-cmd -f .env.production react-scripts build"

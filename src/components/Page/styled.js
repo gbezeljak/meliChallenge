@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import mediaQueries from 'config/media-queries'
 
 export const PageContainer = styled.div`
   height: 100%;
@@ -17,10 +16,6 @@ export const PageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   overflow-y: auto;
-
-  ${mediaQueries.tablet`
-    padding: 0 16px;
-  `};
 `
 
 export default PageWrapper
