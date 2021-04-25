@@ -1,7 +1,36 @@
 import React, { Component } from 'react'
 
 class Logic extends Component {
-  state = { input: '' }
+  state = { input: '', output: '' }
+
+  handleTrigger = () => {
+    const arr = this.state.input.split('')
+    let result = [],
+      prevChar,
+      count,
+      i
+
+    for (prevChar = arr[0], count = 1, i = 1; i < arr.length; i++) {
+      if (prevChar !== arr[i]) {
+        // add sequence
+        result = [...result, `${count > 1 ? count : ''}${prevChar}`]
+        count = 1
+        prevChar = arr[i]
+      } else {
+        // up count
+        count++
+      }
+    }
+    // add last sequence
+    result = [...result, `${count > 1 ? count : ''}${prevChar}`]
+
+    this.setState({ output: result })
+  }
+
+  stringifyOutput = (arr) => {
+    return arr.toString().replace(/[, ]+/g, '')
+  }
+
   render() {
     return (
       <div style={{ height: '100%', display: 'flex' }}>
@@ -26,7 +55,18 @@ class Logic extends Component {
               <input
                 placeholder={'input'}
                 onChange={(e) => this.setState({ input: e.target.value })}
+                style={{ width: '80%' }}
               />
+              <button
+                style={{ width: '40%' }}
+                disabled={!this.state.input}
+                onClick={() => this.handleTrigger()}
+              >
+                trigger
+              </button>
+              <div style={{ margin: '20px 0px' }}>
+                OutPut: {this.stringifyOutput(this.state.output)}
+              </div>
             </div>{' '}
             <div
               style={{
